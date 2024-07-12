@@ -23,7 +23,7 @@ Homepage = "https://github.com/KarelSchwab/dev-env"
 Issues = "https://github.com/KarelSchwab/dev-env/issues"
 
 [project.scripts]
-dev-env = "dev_env:main"
+dev-env = "dev_env.main:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/main.py"]

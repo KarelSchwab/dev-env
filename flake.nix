@@ -20,42 +20,28 @@
         packages = with pkgs; [
           python311Full
           python311Packages.autopep8
-          python311Packages.build
         ];
       };
 
       packages.default = pkgs.python3Packages.buildPythonApplication {
         pname = "dev-env";
         version = "0.0.1";
+        pyproject = true;
         src = ./.;
 
-        buildInputs = [ pkgs.python3 ];
+        buildInputs = [ 
+          pkgs.python3
+          pkgs.python3Packages.hatchling
+        ];
 
         doCheck = false;
 
         installPhase = ''
           mkdir -p $out/bin
-          cp ${./src/main.py} $out/bin/main.py
-          chmod +x $out/bin/main.py
+          cp ${./src/main.py} $out/bin/dev-env
+          chmod +x $out/bin/dev-env
         '';
-
-        meta = with pkgs.lib; {
-          description = "A Nix flake project generator";
-          license = licenses.mit;
-          # maintainers = with maintainers; [ your-github-username ];
-        };
       };
     });
 }
-      # Development environment output
-      # devShells = forAllSystems ({ pkgs }: {
-      #   default = pkgs.mkShell {
-      #     # The Nix packages provided in the environment
-      #     packages = with pkgs; [
-      #       python311Full
-      #       python311Packages.autopep8
-      #       python311Packages.build
-      #     ];
-      #   };
-      # });
-    # }
+
