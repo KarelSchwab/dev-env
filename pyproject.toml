@@ -13,7 +13,7 @@ readme = "README.md"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
-    "Operating System :: Linux",
+    "Operating System :: POSIX :: Linux",
 ]
 
 dependencies = []
@@ -21,3 +21,9 @@ dependencies = []
 [project.urls]
 Homepage = "https://github.com/KarelSchwab/dev-env"
 Issues = "https://github.com/KarelSchwab/dev-env/issues"
+
+[project.scripts]
+dev-env = "dev_env:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/main.py"]
